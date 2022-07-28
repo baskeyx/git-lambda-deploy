@@ -17,4 +17,17 @@ router.get('/', async (req, res) => {
   res.send(characterResponse);
 });
 
+router.get('/:characterId', async (req, res) => {
+  const { characterId } = req.params;
+  const query = await character.find({ id: characterId });
+  const { name, colour, stats, id } = query[0];
+  const characterResponse = {
+    name,
+    colour,
+    id,
+    stats: getRandomStats(stats),
+  }
+  res.send(characterResponse);
+});
+
 module.exports = router;
