@@ -8,10 +8,10 @@ const serverless = require('serverless-http');
 const port = 8000;
 const { ENVIRONMENT } = process.env;
 
-app.use(express.static(path.resolve('frontend/build')))
+app.use(express.static(path.resolve('build')))
 
 app.get('/', function (req, res) {
-  res.sendFile(path.resolve('frontend/build', 'index.html'));
+  res.sendFile(path.resolve('build', 'index.html'));
 });
 
 app.get('/api', (req, res) => {
