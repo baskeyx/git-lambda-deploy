@@ -5,6 +5,8 @@
   "license": "MIT",
   "dependencies": {
     "ascii-faces": "^1.1.0",
-    "typescript": "^4.7.4"
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "serverless-http": "^3.0.1"
   }
 }
