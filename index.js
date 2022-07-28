@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 const app = express();
 app.use(cors());
@@ -7,8 +8,8 @@ const serverless = require('serverless-http');
 const port = 8000;
 const { ENVIRONMENT } = process.env;
 
-app.get('/', (req, res) => {
-  res.send({copy: 'hiya'});
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.get('/api', (req, res) => {
