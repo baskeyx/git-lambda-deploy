@@ -17,7 +17,7 @@ const port = 8000;
 const { ENVIRONMENT } = process.env;
 
 app.get('/', (req, res) => {
-  res.send({copy: hiya});
+  res.send({copy: 'hiya'});
 });
 
 app.get('/api', (req, res) => {
