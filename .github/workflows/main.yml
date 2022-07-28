@@ -28,8 +28,3 @@ jobs:
         run: |
           zip -r function.zip .
           aws lambda update-function-code --function-name githubActionExample --zip-file fileb://function.zip
-      - name: reactBuild
-        run: | 
-          cd frontend
-          npm install
-          npm run build
