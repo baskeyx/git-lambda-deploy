@@ -2,6 +2,7 @@ const express = require('express');
 const { character } = require('../models/Character.model.js');
 const getRandomInt = require('../functions/getRandomInt');
 const getRandomStats = require('../functions/getRandomStats');
+const getCharacterById = require('../functions/getCharacterById');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
@@ -19,14 +20,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:characterId', async (req, res) => {
   const { characterId } = req.params;
-  const query = await character.find({ id: characterId });
-  const { name, colour, stats, id } = query[0];
-  const characterResponse = {
-    name,
-    colour,
-    id,
-    stats: getRandomStats(stats),
-  }
+  const characterResponse = await getCharacterById(characterId);
   res.send(characterResponse);
 });
 
