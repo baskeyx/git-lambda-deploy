@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const serverless = require('serverless-http');
 const session = require('express-session');
+const cookieParser = require("cookie-parser");
 require('dotenv').config();
 const { sessionStore } = require('./connectors/mongoose');
 
@@ -14,6 +15,7 @@ const userRoutes = require('./routes/users');
 const cardRoutes = require('./routes/cards');
 
 const app = express();
+app.use(cookieParser());
 app.use(cors({credentials: true, origin: (ENVIRONMENT === 'DEV' ? 'http://localhost:3000': 'https://www.infinitywars.co.uk') }));
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
