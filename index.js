@@ -14,17 +14,7 @@ const userRoutes = require('./routes/users');
 const cardRoutes = require('./routes/cards');
 
 const app = express();
-//const whitelist = ['http://localhost:3000', 'https://www.infinitywars.co.uk/'];
-const corsOptions = {
-  credentials: true,
-  // origin: (origin, callback) => {
-  //   if(whitelist.includes(origin))
-  //     return callback(null, true)
-  //     callback(new Error('Not allowed by CORS'));
-  // }
-}
-
-app.use(cors(corsOptions));
+app.use(cors({credentials: true, origin: (ENVIRONMENT === 'DEV' ? 'http://localhost:3000': 'https://www.infinitywars.co.uk/') }));
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 const oneDay = 1000 * 60 * 60 * 24;
