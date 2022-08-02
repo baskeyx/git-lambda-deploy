@@ -1,8 +1,18 @@
 const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo');
+
 require('dotenv').config();
 
 const { MONGOURI } = process.env;
 
-mongoose.connect(MONGOURI, { useNewUrlParser: true, useUnifiedTopology: true });
+const client = mongoose.connect(MONGOURI, { useNewUrlParser: true, useUnifiedTopology: true }).then(m => m.connection.getClient());;
 
-module.exports = mongoose;
+const sessionStore = MongoStore.create({
+  clientPromise: client,
+  dbName: "infinitywars",
+  stringify: false,
+  autoRemove: 'interval',
+  autoRemoveInterval: 1
+});
+
+module.exports = { mongoose, sessionStore };

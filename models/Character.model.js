@@ -1,4 +1,4 @@
-const mongoose = require('../connectors/mongoose');
+const { mongoose } = require('../connectors/mongoose');
 
 const character = mongoose.model('Characters', mongoose.Schema({
   id: { type: Number, unique : true, required : true },

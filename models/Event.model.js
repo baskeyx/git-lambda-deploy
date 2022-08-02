@@ -1,4 +1,4 @@
-const mongoose = require('../connectors/mongoose');
+const { mongoose } = require('../connectors/mongoose');
 
 const event = mongoose.model('Events', mongoose.Schema({
   id: { type: Number, unique : true, required : true },

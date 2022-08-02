@@ -1,4 +1,4 @@
-const mongoose = require('../connectors/mongoose');
+const { mongoose } = require('../connectors/mongoose');
 
 const game = mongoose.model('Games', mongoose.Schema({
   id: { type: String, unique : true, required : true },
