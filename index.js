@@ -20,11 +20,21 @@ app.use(cors({credentials: true, origin: (ENVIRONMENT === 'DEV' ? 'http://localh
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 const oneDay = 1000 * 60 * 60 * 24;
+let cookie = {};
+if (ENVIRONMENT === 'DEV') {
+  cookie = { maxAge: oneDay }
+} else {
+  cookie =  {
+    sameSite: "none",
+    secure: true,
+    maxAge: oneDay
+  }
+}
 app.use(session({
   secret: SESSIONSECRET,
   saveUninitialized: false,
   store: sessionStore,
-  cookie: { maxAge: oneDay },
+  cookie,
   resave: false,
 }));
 
