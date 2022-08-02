@@ -14,7 +14,7 @@ const userRoutes = require('./routes/users');
 const cardRoutes = require('./routes/cards');
 
 const app = express();
-app.use(cors({credentials: true, origin: (ENVIRONMENT === 'DEV' ? 'http://localhost:3000': 'https://www.infinitywars.co.uk/') }));
+app.use(cors({credentials: true, origin: (ENVIRONMENT === 'DEV' ? 'http://localhost:3000': 'https://www.infinitywars.co.uk') }));
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 const oneDay = 1000 * 60 * 60 * 24;
