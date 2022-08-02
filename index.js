@@ -14,15 +14,14 @@ const userRoutes = require('./routes/users');
 const cardRoutes = require('./routes/cards');
 
 const app = express();
-const whitelist = ['http://localhost:3000', 'https://www.infinitywars.co.uk/'];
+//const whitelist = ['http://localhost:3000', 'https://www.infinitywars.co.uk/'];
 const corsOptions = {
-  credentials: true, // This is important.
-  origin: (origin, callback) => {
-    if(whitelist.includes(origin))
-      return callback(null, true)
-
-      callback(new Error('Not allowed by CORS'));
-  }
+  credentials: true,
+  // origin: (origin, callback) => {
+  //   if(whitelist.includes(origin))
+  //     return callback(null, true)
+  //     callback(new Error('Not allowed by CORS'));
+  // }
 }
 
 app.use(cors(corsOptions));
